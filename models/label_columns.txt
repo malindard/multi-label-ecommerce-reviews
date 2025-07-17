@@ -1,0 +1,6 @@
+has_kualitas_produk
+has_harga
+has_pengiriman
+has_pelayanan
+has_performa
+has_packaging
