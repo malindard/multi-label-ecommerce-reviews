@@ -176,6 +176,9 @@ class ReviewPreprocessor:
         # Load data
         df = pd.read_csv(input_file)
 
+        # All data
+        print(f"Number of the data: {df.shape}")
+
         # --- HAPUS DATA YANG KOSONG DI 'ulasan' DAN 'nama_barang' ---
         df.dropna(subset=['ulasan', 'nama_barang'], inplace=True)
         df.reset_index(drop=True, inplace=True)
