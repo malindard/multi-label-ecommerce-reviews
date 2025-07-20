@@ -11,7 +11,8 @@ urls = [
     'https://www.tokopedia.com/ismile-indonesia/review',
     'https://www.tokopedia.com/samsung-official-store/review',
     'https://www.tokopedia.com/oppo/review',
-    'https://www.tokopedia.com/xiaomi/review'
+    'https://www.tokopedia.com/xiaomi/review',
+    'https://www.tokopedia.com/vivo/review'
 ]
 
 all_data = []
@@ -25,7 +26,7 @@ for url in urls:
 
     nama_toko = url.split("/")[-2]
 
-    for _ in range(100):
+    for _ in range(200):
         try:
             WebDriverWait(driver, 10).until(
                 EC.visibility_of_element_located((By.CSS_SELECTOR, "button[aria-label^='Laman berikutnya']"))
