@@ -17,16 +17,17 @@ urls = [
 
 all_data = []
 
+options = webdriver.ChromeOptions()
+options.add_argument("--start-maximized")
+driver = webdriver.Chrome(options=options)
+
 for url in urls:
     print(f"Processing: {url}")
-    options = webdriver.ChromeOptions()
-    options.add_argument("--start-maximized")
-    driver = webdriver.Chrome(options=options)
     driver.get(url)
 
     nama_toko = url.split("/")[-2]
 
-    for _ in range(200):
+    for _ in range(400):
         try:
             WebDriverWait(driver, 10).until(
                 EC.visibility_of_element_located((By.CSS_SELECTOR, "button[aria-label^='Laman berikutnya']"))
@@ -68,8 +69,10 @@ for url in urls:
         except:
             break
 
-    driver.quit()
     print(f"Scraping completed for: {url}\n")
+
+driver.quit()
+print("All scraping done.")
 
 # Create DataFrame
 df = pd.DataFrame(all_data, columns=["toko", "nama_barang", "ulasan", "rating"])
